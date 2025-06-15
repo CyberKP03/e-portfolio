@@ -10,7 +10,7 @@ const Header = () => {
     <header className="container mx-auto py-8 text-white">
       <div className="mx-auto flex justify-between items-center">
         <Link href="/">
-          <h1 className="text-4xl font-semi-bold relative group cursor-pointer">
+          <h1 className="text-2xl font-semi-bold relative group cursor-pointer">
             {/* <span className="opacity-100 hover:opacity-0 transition-opacity duration-300"> */}
             <span className="text-white group-hover:text-accent transition-all">
               Khu
@@ -24,7 +24,9 @@ const Header = () => {
             </span> */}
           </h1>
         </Link>
-          <span className="text-xl text-white">Software Development Engineer</span>
+        <span className="mx-6 text-md truncate text-white xl:text-xl">
+          Software Development Engineer
+        </span>
         {/* desktop nav & hire me button */}
         <div className="hidden xl:flex items-center gap-8">
           <Nav />
