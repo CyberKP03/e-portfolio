@@ -24,7 +24,7 @@ const Header = () => {
             </span> */}
           </h1>
         </Link>
-        <span className="mx-6 text-md truncate text-white xl:text-xl">
+        <span className="mx-4 text-md truncate text-white xl:text-xl">
           Software Development Engineer
         </span>
         {/* desktop nav & hire me button */}
