@@ -1,15 +1,7 @@
 "use client";
 
 import { listOfTabs } from "@/config/content";
-import { renderTabContent } from "@/config/content";
-
 import { Tabs, TabsTrigger, TabsList, TabsContent } from "@/components/ui/tabs";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { motion } from "framer-motion";
 import ContentForTabs from "@/components/ContentForTabs";
 
@@ -43,7 +35,7 @@ const Resume = () => {
               <TabsContent
                 value={tab.value}
                 key={`content-${index}`}
-                className="w-full"
+                className={tab.class}
               >
                 <ContentForTabs tabValue={tab.value} />
               </TabsContent>
