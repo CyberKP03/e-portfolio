@@ -45,7 +45,7 @@ const Resume = () => {
                 key={`content-${index}`}
                 className="w-full"
               >
-                {ContentForTabs(tab.value)}
+                <ContentForTabs tabValue={tab.value} />
               </TabsContent>
             ))}
           </div>

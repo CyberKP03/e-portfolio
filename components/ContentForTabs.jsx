@@ -1,8 +1,17 @@
+"use client";
+
 import { experience } from "@/config/content";
+import { skillsForResume } from "@/config/content";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { education } from "@/config/content";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
-const ContentForTabs = (tabValue) => {
+const ContentForTabs = ({ tabValue }) => {
   switch (tabValue) {
     case "experience":
       return (
@@ -13,15 +22,13 @@ const ContentForTabs = (tabValue) => {
               className="flex flex-col gap-[30px] text-center xl:text-left"
             >
               <h3 className="text-4xl font-bold">{exp.title}</h3>
-              <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
-                {exp.description}
-              </p>
+              <p className="text-white/60 mx-auto xl:mx-0">{exp.description}</p>
               <ScrollArea className="h-[400px] rounded-xl">
                 <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
                   {exp.items.map((item, itemIndex) => {
                     return (
                       <li
-                        key={`item-${itemIndex}`}
+                        key={`${expIndex}-${itemIndex}`}
                         className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
                       >
                         <span className="text-accent">{item.duration}</span>
@@ -44,31 +51,81 @@ const ContentForTabs = (tabValue) => {
       );
     case "education":
       return (
-        <div className="flex flex-col gap-[30px] text-center xl:text-left">
-          <h3 className="text-4xl font-bold">{education.title}</h3>
-          <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
-            {education.description}
-          </p>
-          <ScrollArea className="h-[400px] rounded-xl">
-            <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
-              {education.items.map((item, itemIndex) => (
-                <li
-                  key={`edu-item-${itemIndex}`}
-                  className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
-                >
-                  <span className="text-accent">{item.duration}</span>
-                  <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
-                    {item.degree}
-                  </h3>
-                  <div className="flex items-center gap-3">
-                    {/* dot */}
-                    <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
-                    <p className="text-white/60">{item.institution}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </ScrollArea>
+        <div>
+          {education.map((edu, eduIndex) => (
+            <div
+              key={`edu-${eduIndex}`}
+              className="flex flex-col gap-[30px] text-center xl:text-left"
+            >
+              <h3 className="text-4xl font-bold">{edu.title}</h3>
+              <p className="text-white/60 mx-auto xl:mx-0">{edu.description}</p>
+              <ScrollArea className="h-[400px] rounded-xl">
+                <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
+                  {edu.items.map((item, itemIndex) => {
+                    return (
+                      <li
+                        key={`${eduIndex}-${itemIndex}`}
+                        className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                      >
+                        <span className="text-accent">{item.duration}</span>
+                        <h3 className="text-xl max-w-[360px] min-h-[60px] text-center lg:text-left">
+                          {item.degree}
+                        </h3>
+                        <div className="flex items-center gap-3">
+                          {/* dot */}
+                          <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
+                          <p className="text-white/60">{item.institution}</p>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </ScrollArea>
+            </div>
+          ))}
+        </div>
+      );
+    case "skillsForResume":
+      return (
+        <div className="flex flex-col gap-[30px]">
+          {skillsForResume.map((skill, skillIndex) => (
+            <div className="flex flex-col gap-[30px]  text-center xl:text-left">
+              <h3 className="text-4xl font-bold">{skill.title}</h3>
+              <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
+                {skill.description}
+              </p>
+              <ScrollArea className="h-[400px] rounded-xl">
+                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                  {skill.skillList.map((item, itemIndex) => {
+                    return (
+                      <li key={`${skillIndex}-${itemIndex}`}>
+                        <TooltipProvider delayDuration={100}>
+                          <Tooltip>
+                            {/* <TooltipTrigger className="w-[90px] h-[90px] bg-[#232329] rounded-xl flex justify-center items-center group"> */}
+                            <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex flex-col justify-center items-center group relative">
+                              <div className="text-6xl group-hover:text-accent transition-all duration-300 mt-6">
+                                {item.icon}
+                              </div>
+                              <div className="text-white text-sm capitalize mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                {item.name}
+                              </div>
+
+                              {/* Tooltip for small screens only */}
+                              <TooltipContent className="lg:hidden md:hidden xl:hidden">
+                                <p className="capitalize text-primary">
+                                  {item.name}
+                                </p>
+                              </TooltipContent>
+                            </TooltipTrigger>
+                          </Tooltip>
+                        </TooltipProvider>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </ScrollArea>
+            </div>
+          ))}
         </div>
       );
   }
