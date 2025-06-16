@@ -125,7 +125,7 @@ export const listOfTabs = [
 export const aboutForResume = [
   {
     title: "About Me",
-    description: `Hi I am Khuzaima Pishori — a Software Engineer with over 3 years of experience building scalable and intuitive web applications. I focus on front-end interfaces using Angular and TypeScript as well as backend performance enhancements with Java or GoLang. At Reliance Jio Platforms Limited I lead the UI team and work on delivering efficient systems. When not coding I am either playing table tennis or on the volleyball court. I also enjoy exploring the technicalities of the games I play and discovering new AI tools. Let us build something impactful together!`,
+    description: `Hi I am Khuzaima Pishori — a Software Engineer with over 3 years of experience building scalable and intuitive web applications. I focus on front-end interfaces using Angular and TypeScript as well as backend performance enhancements with Java or GoLang. At Reliance Jio Platforms Limited I lead the UI team and work on delivering efficient systems. When not coding I am either playing table tennis or chess. I also enjoy exploring the technicalities of the games I play and discovering new AI tools. Let us build something impactful together!`,
     info: [
       {
         fileName: "Name",
