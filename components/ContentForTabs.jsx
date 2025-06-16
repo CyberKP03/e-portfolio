@@ -109,13 +109,6 @@ const ContentForTabs = ({ tabValue }) => {
                               <div className="text-white text-sm capitalize mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 {item.name}
                               </div>
-
-                              {/* Tooltip for small screens only */}
-                              <TooltipContent className="lg:hidden md:hidden xl:hidden">
-                                <p className="capitalize text-primary">
-                                  {item.name}
-                                </p>
-                              </TooltipContent>
                             </TooltipTrigger>
                           </Tooltip>
                         </TooltipProvider>
