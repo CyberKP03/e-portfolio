@@ -10,6 +10,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import ComingSoon from "./ComingSoon";
 
 const ContentForTabs = ({ tabValue }) => {
   switch (tabValue) {
@@ -91,7 +92,7 @@ const ContentForTabs = ({ tabValue }) => {
           {skillsForResume.map((skill, skillIndex) => (
             <div className="flex flex-col gap-[30px]  text-center xl:text-left">
               <h3 className="text-4xl font-bold">{skill.title}</h3>
-              <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
+              <p className="text-white/60 mx-auto xl:mx-0">
                 {skill.description}
               </p>
               <ScrollArea className="h-[400px] rounded-xl">
@@ -121,6 +122,8 @@ const ContentForTabs = ({ tabValue }) => {
           ))}
         </div>
       );
+    default:
+      return <ComingSoon />;
   }
 };
 
