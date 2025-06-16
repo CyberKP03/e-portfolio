@@ -1,5 +1,7 @@
+import ComingSoon from "@/components/ComingSoon";
+
 const Contact = () => {
-  return <div>contact page</div>;
+  return <ComingSoon />;
 };
 
 export default Contact;
