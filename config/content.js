@@ -103,18 +103,22 @@ export const listOfTabs = [
   {
     label: "Experience",
     value: "experience",
+    class: "w-full",
   },
   {
     label: "Education",
     value: "education",
+    class: "w-full",
   },
   {
     label: "Skills",
     value: "skillsForResume",
+    class: "w-full h-full",
   },
   {
     label: "About Me",
-    value: "about",
+    value: "aboutForResume",
+    class: "w-full text-center xl:text-left",
   },
 ];
 
@@ -128,7 +132,7 @@ export const aboutForResume = [
         fieldValue: "Khuzaima Pishori",
       },
       {
-        fileName: "Email ID",
+        fileName: "Email",
         fieldValue: "pishorikhuzaima@gmail.com",
       },
       {
@@ -139,11 +143,11 @@ export const aboutForResume = [
         fileName: "Experience",
         fieldValue: "3+ years",
       },
-      {
-        fileName: "Core Skills",
-        fieldValue:
-          "Full Stack Development, Frontend Development, API Development, Database Management, Big Data",
-      },
+      // {
+      //   fileName: "Core Skills",
+      //   fieldValue:
+      //     "Full Stack Development, Frontend Development, API Development, Big Data, Database Management",
+      // },
       {
         fileName: "Nationality",
         fieldValue: "Indian",
