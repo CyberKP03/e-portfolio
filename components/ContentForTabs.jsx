@@ -71,14 +71,16 @@ const ContentForTabs = ({ tabValue }) => {
                         key={`${eduIndex}-${itemIndex}`}
                         className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
                       >
-                        <span className="text-accent">{item.duration}</span>
+                        <span className="mt-6 text-accent">
+                          {item.duration}
+                        </span>
                         <h3 className="text-xl max-w-[600px] min-h-[60px] text-center lg:text-left">
                           {item.degree}
                         </h3>
                         <div className="flex items-center gap-3">
                           {/* dot */}
-                          <span className="mt-3 w-[6px] h-[6px] rounded-full bg-accent"></span>
-                          <p className="mt-3 text-white/60">
+                          <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
+                          <p className="my-6 text-white/60">
                             {item.institution}
                           </p>
                         </div>
@@ -144,13 +146,28 @@ const ContentForTabs = ({ tabValue }) => {
               </p>
               <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[620px] mx-auto xl:mx-0">
                 {about.info.map((item, index) => {
+                  const isLink =
+                    item.links !== "" && (index === 1 || index === 2);
                   return (
                     <li
                       key={index}
                       className="flex items-center justify-center xl:justify-start gap-2"
                     >
-                      <span className="text-white/40">{item.fileName}:</span>
-                      <span className="text-xl">{item.fieldValue}</span>
+                      <span className="text-white/40">{item.fieldName}:</span>
+                      {isLink ? (
+                        <a
+                          href={item.links}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white hover:text-accent transition-colors duration-300 text-xl"
+                        >
+                          {item.fieldValue}
+                        </a>
+                      ) : (
+                        <span className="text-white text-xl">
+                          {item.fieldValue}
+                        </span>
+                      )}
                     </li>
                   );
                 })}

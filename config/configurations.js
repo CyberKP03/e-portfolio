@@ -168,29 +168,35 @@ export const aboutForResume = [
     description: `Hi I am Khuzaima Pishori — a Software Engineer with over 3 years of experience building scalable and intuitive web applications. I focus on front-end interfaces using Angular and TypeScript as well as backend performance enhancements with Java or GoLang. When not coding I am either playing table tennis or chess. I also enjoy exploring the technicalities of the games I play and discovering new AI tools. Let us build something impactful together!`,
     info: [
       {
-        fileName: "Name",
+        fieldName: "Name",
         fieldValue: "Khuzaima Pishori",
+        links: "",
       },
       {
-        fileName: "Email",
+        fieldName: "Email",
         fieldValue: "pishorikhuzaima@gmail.com",
+        links:
+          "https://mail.google.com/mail/?view=cm&fs=1&to=pishorikhuzaima@gmail.com",
       },
       {
-        fileName: "Contact No.",
+        fieldName: "Contact No.",
         fieldValue: "+91 7021633526",
+        links: "tel:+917021633526",
       },
       {
-        fileName: "Experience",
+        fieldName: "Experience",
         fieldValue: "3+ years",
+        links: "",
       },
       // {
-      //   fileName: "Core Skills",
+      //   fieldName: "Core Skills",
       //   fieldValue:
       //     "Full Stack Development, Frontend Development, API Development, Big Data, Database Management",
       // },
       {
-        fileName: "Nationality",
+        fieldName: "Nationality",
         fieldValue: "Indian",
+        links: "",
       },
     ],
   },
