@@ -77,8 +77,8 @@ const ContentForTabs = ({ tabValue }) => {
                         </h3>
                         <div className="flex items-center gap-3">
                           {/* dot */}
-                          <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
-                          <p className="text-white/60">{item.institution}</p>
+                          <span className="mt-3 w-[6px] h-[6px] rounded-full bg-accent"></span>
+                          <p className="mt-3 text-white/60">{item.institution}</p>
                         </div>
                       </li>
                     );
