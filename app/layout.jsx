@@ -5,7 +5,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import PageTransition from "@/components/PageTransition";
 import StairTransition from "@/components/StairTransition";
-import { metadata } from "@/config/content";
+import { metadata } from "@/config/configurations";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,7 +21,6 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   weights: ["100", "200", "300", "400", "500", "600", "700", "800"],
 });
-
 
 export default function RootLayout({ children }) {
   return (

@@ -1,21 +1,7 @@
 "use client";
 
 import CountUp from "react-countup";
-
-const stats = [
-  {
-    num: 5,
-    text: "Years of Experience",
-  },
-  {
-    num: 421,
-    text: "Cups of Coffee",
-  },
-  {
-    num: 12,
-    text: "Technologies Mastered",
-  },
-];
+import { stats } from "@/config/configurations";
 
 const Stats = () => {
   return (
@@ -30,8 +16,8 @@ const Stats = () => {
               >
                 <CountUp
                   end={item?.num}
-                  duration={4}
-                  delay={1}
+                  duration={9}
+                  delay={index * 0.5}
                   className="text-4xl xl:text-6xl font-extrabold"
                 />
                 <p

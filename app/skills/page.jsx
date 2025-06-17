@@ -2,7 +2,7 @@
 
 import { BsArrowDownLeft } from "react-icons/bs";
 import Link from "next/link";
-import { skills } from "@/config/content";
+import { skills } from "@/config/configurations";
 
 import { motion } from "framer-motion";
 const Skills = () => {
