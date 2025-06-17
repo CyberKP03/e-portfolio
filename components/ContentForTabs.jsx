@@ -72,7 +72,7 @@ const ContentForTabs = ({ tabValue }) => {
                         className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
                       >
                         <span className="text-accent">{item.duration}</span>
-                        <h3 className="text-xl max-w-[360px] min-h-[60px] text-center lg:text-left">
+                        <h3 className="text-xl max-w-[600px] min-h-[60px] text-center lg:text-left">
                           {item.degree}
                         </h3>
                         <div className="flex items-center gap-3">
@@ -93,7 +93,10 @@ const ContentForTabs = ({ tabValue }) => {
       return (
         <div className="flex flex-col gap-[30px]">
           {skillsForResume.map((skill, skillIndex) => (
-            <div className="flex flex-col gap-[30px]  text-center xl:text-left">
+            <div
+              key={skillIndex}
+              className="flex flex-col gap-[30px]  text-center xl:text-left"
+            >
               <h3 className="text-4xl font-bold">{skill.title}</h3>
               <p className="text-white/60 mx-auto xl:mx-0">
                 {skill.description}
@@ -129,7 +132,10 @@ const ContentForTabs = ({ tabValue }) => {
       return (
         <div className="flex flex-col gap-[30px]">
           {aboutForResume.map((about, aboutIndex) => (
-            <div className="flex flex-col gap-[30px] text-center xl:text-left" key={aboutIndex}>
+            <div
+              className="flex flex-col gap-[30px] text-center xl:text-left"
+              key={aboutIndex}
+            >
               <h3 className="text-4xl font-bold">{about.title}</h3>
               <p className="text-white/60 mx-auto xl:mx-0">
                 {about.description}
