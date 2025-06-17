@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { links } from "@/config/content";
+import { links } from "@/config/configurations";
 
 const Nav = () => {
   return (
@@ -17,8 +17,7 @@ const Nav = () => {
             key={index}
             href={link?.path}
             className={`${
-              isActive &&
-              "text-accent border-b-2 border-accent"
+              isActive && "text-accent border-b-2 border-accent"
             } capitalize font-medium hover:text-accent transition-all`}
           >
             {link?.name}

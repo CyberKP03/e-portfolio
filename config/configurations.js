@@ -9,6 +9,9 @@ import {
   FaBootstrap,
   FaWordpress,
   FaNodeJs,
+  FaGithub,
+  FaLinkedinIn,
+  FaYoutube,
 } from "react-icons/fa";
 
 import { SiGit, SiMysql, SiNextdotjs, SiTailwindcss } from "react-icons/si";
@@ -21,7 +24,50 @@ import {
 } from "react-icons/bi";
 
 import { VscAzureDevops } from "react-icons/vsc";
-import { ScrollArea } from "@/components/ui/scroll-area";
+
+//variants
+export const stairAnimation = {
+  initial: {
+    top: "0%",
+  },
+  animate: {
+    top: "100%",
+  },
+  exit: {
+    top: ["100%", "0%"],
+  },
+};
+
+export const reversedIndex = (index) => {
+  const totalSteps = 6;
+  return totalSteps - index - 1;
+};
+
+// Social media icons
+export const socials = [
+  { icon: <FaGithub />, path: "https://github.com/CyberKP03" },
+  {
+    icon: <FaLinkedinIn />,
+    path: "https://www.linkedin.com/in/khuzaima-pishori-312859194/",
+  },
+  { icon: <FaYoutube />, path: "https://www.youtube.com/@khuzaikistaan1685" },
+];
+
+// Statistics section content
+export const stats = [
+  {
+    num: 3,
+    text: "Years of Experience",
+  },
+  {
+    num: 447,
+    text: "Cups of Coffee",
+  },
+  {
+    num: 20,
+    text: "Technologies Mastered",
+  },
+];
 
 //Meta information for the website
 export const metadata = {
@@ -91,12 +137,6 @@ export const skills = [
     href: "",
   },
 ];
-
-// About section content
-export const about = {
-  title: "About Me",
-  description: `Hi I am Khuzaima Pishori — a Software Engineer with over 3 years of experience building scalable and intuitive web applications. I focus on front-end interfaces using Angular and TypeScript as well as backend performance enhancements with Java or GoLang. At Reliance Jio Platforms Limited I lead the UI team and work on delivering efficient systems. When not coding I am either playing table tennis or on the volleyball court. I also enjoy exploring the technicalities of the games I play and discovering new AI tools. Let us build something impactful together!`,
-};
 
 //Resume section content
 export const listOfTabs = [
@@ -169,16 +209,16 @@ export const experience = [
         description: `Leading the UI team to develop and maintain scalable web applications using Angular and TypeScript, while enhancing backend performance with Java and GoLang.`,
       },
       {
-        company: "Storiyaan: Stories that Inspire",
-        position: "Head of Web Development",
-        duration: "April 2020 - May 2022",
-        description: `Optimized the official website using advanced WordPress techniques, led a 13-member team, and collaborated with 20+ high-profile personalities while earning multiple performance awards.`,
-      },
-      {
         company: "Aegon Studio",
         position: "Project Manager",
         duration: "March 2021 - June 2022",
         description: `As one of the founding partners, planning, managing and developing pipeline projects`,
+      },
+      {
+        company: "Storiyaan: Stories that Inspire",
+        position: "Head of Web Development",
+        duration: "April 2020 - May 2022",
+        description: `Optimized the official website using advanced WordPress techniques, led a 13-member team, and collaborated with 20+ high-profile personalities while earning multiple performance awards.`,
       },
     ],
   },

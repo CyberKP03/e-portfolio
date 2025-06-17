@@ -1,6 +1,6 @@
 "use client";
 
-import { listOfTabs } from "@/config/content";
+import { listOfTabs } from "@/config/configurations";
 import { Tabs, TabsTrigger, TabsList, TabsContent } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
 import ContentForTabs from "@/components/ContentForTabs";

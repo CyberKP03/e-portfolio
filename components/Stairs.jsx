@@ -1,23 +1,6 @@
 "use client";
+import { reversedIndex, stairAnimation } from "@/config/configurations";
 import { motion } from "framer-motion";
-
-//variants
-const stairAnimation = {
-  initial: {
-    top: "0%",
-  },
-  animate: {
-    top: "100%",
-  },
-  exit: {
-    top: ["100%", "0%"],
-  },
-};
-
-const reversedIndex = (index) => {
-  const totalSteps = 6;
-  return totalSteps - index - 1;
-};
 
 const Stairs = () => {
   return (

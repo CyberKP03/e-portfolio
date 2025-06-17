@@ -5,7 +5,7 @@ import {
   skillsForResume,
   education,
   aboutForResume,
-} from "@/config/content";
+} from "@/config/configurations";
 
 import {
   Tooltip,
@@ -78,7 +78,9 @@ const ContentForTabs = ({ tabValue }) => {
                         <div className="flex items-center gap-3">
                           {/* dot */}
                           <span className="mt-3 w-[6px] h-[6px] rounded-full bg-accent"></span>
-                          <p className="mt-3 text-white/60">{item.institution}</p>
+                          <p className="mt-3 text-white/60">
+                            {item.institution}
+                          </p>
                         </div>
                       </li>
                     );

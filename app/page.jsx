@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
-import { useEffect, useState } from "react";
 
 // Components
 import Socials from "@/components/Socials";

@@ -10,7 +10,7 @@ import {
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { CiMenuFries } from "react-icons/ci";
-import { links } from "@/config/content";
+import { links } from "@/config/configurations";
 import { useState } from "react";
 
 const MobileNav = () => {
