@@ -112,7 +112,7 @@ export const skills = [
     num: "02",
     title: "Modern Frontend Development",
     description:
-      "Crafting interactive UIs with React, Next.js, and Angular, emphasizing responsive design, state management, and modern web animations for enhanced user experience.",
+      "Crafting interactive UIs with React, Next.js, and AngularTS, emphasising responsive design, state management, and modern web animations for enhanced user experience.",
     href: "",
   },
   {
@@ -126,14 +126,14 @@ export const skills = [
     num: "04",
     title: "Database Management",
     description:
-      "Working with SQL and NoSQL databases, optimizing queries, and designing efficient database schemas.",
+      "Working with SQL and NoSQL databases, optimising queries, and designing efficient database schemas.",
     href: "",
   },
   {
     num: "05",
     title: "Big Data",
     description:
-      "Leveraging GoLang's concurrency features for efficient data processing and analysis, combined with optimized SQL queries for handling large-scale datasets.",
+      "Leveraging GoLang's concurrency features for efficient data processing and analysis, combined with optimised SQL queries for handling large-scale datasets.",
     href: "",
   },
 ];
@@ -224,7 +224,7 @@ export const experience = [
         company: "Storiyaan: Stories that Inspire",
         position: "Head of Web Development",
         duration: "April 2020 - May 2022",
-        description: `Optimized the official website using advanced WordPress techniques, led a 13-member team, and collaborated with 20+ high-profile personalities while earning multiple performance awards.`,
+        description: `optimised the official website using advanced WordPress techniques, led a 13-member team, and collaborated with 20+ high-profile personalities while earning multiple performance awards.`,
       },
     ],
   },
@@ -234,7 +234,7 @@ export const education = [
   {
     icon: "",
     title: "Education",
-    description: `Bachelor of Engineering in Computer Science from University of Mumbai through Vidyalankar Institute of Technology, specializing in full-stack development, data structures, and distributed systems with hands-on experience in industry projects.`,
+    description: `Bachelor of Engineering in Computer Science from University of Mumbai through Vidyalankar Institute of Technology, specialising in full-stack development, data structures, and distributed systems with hands-on experience in industry projects.`,
     items: [
       {
         institution: "University of Mumbai",
@@ -251,7 +251,7 @@ export const skillsForResume = [
   {
     icon: "",
     title: "Skills",
-    description: `Proficient in a wide range of technologies including Angular, TypeScript, Java, GoLang, and database management systems. Experienced in building scalable web applications and optimizing performance.`,
+    description: `Proficient in a wide range of technologies including Angular, TypeScript, Java, GoLang, and database management systems. Experienced in building scalable web applications and optimising performance.`,
     skillList: [
       {
         icon: <FaHtml5 />,
@@ -279,7 +279,7 @@ export const skillsForResume = [
       },
       {
         icon: <FaAngular />,
-        name: "angular",
+        name: "angularTS",
       },
       {
         icon: <FaReact />,
@@ -332,6 +332,168 @@ export const skillsForResume = [
       {
         icon: <FaWordpress />,
         name: "wordpress",
+      },
+    ],
+  },
+];
+
+//Work section content
+export const projects = [
+  {
+    num: "01",
+    category: "fullstack",
+    title: "Jio CloudXP | Hybrid Cloud Management Platform (HCMP)",
+    description: `Working as a Software Development Engineer-I, where I lead the UI team to develop and maintain scalable web applications, while enhancing backend performance, which includes processing Big Data as well.`,
+    stack: [
+      {
+        label: "HTML5",
+      },
+      {
+        label: "Bootstrap",
+      },
+      {
+        label: "AngularTS",
+      },
+      {
+        label: "TypeScript",
+      },
+      {
+        label: "Git",
+      },
+      {
+        label: "Azure DevOps",
+      },
+      {
+        label: "GoLang",
+      },
+      {
+        label: "Java",
+      },
+      {
+        label: "Spring Boot",
+      },
+      {
+        label: "SQL",
+      },
+    ],
+  },
+  {
+    num: "02",
+    category: "frontend / game development",
+    title: "Aegon Studio | Official Website",
+    description: `Was one of the founding partners, responsible for making the first official version of the website, while planning, managing, and developing pipeline projects, ensuring timely deliverables and quality standards.`,
+    stack: [
+      {
+        label: "Blender",
+      },
+      {
+        label: "Unreal Engine",
+      },
+      {
+        label: "WordPress",
+      },
+      {
+        label: "Figma",
+      },
+      {
+        label: "Parallax.js",
+      },
+      // Add more work items as needed
+    ],
+  },
+  {
+    num: "03",
+    category: "frontend",
+    title: "Storiyaan | Wordpress Website",
+    description: `As the Head of Web Development, developed, modernised and optimised the official website using advanced WordPress techniques, led a 13-member team, and collaborated with 20+ high-profile personalities while earning multiple performance awards.`,
+    stack: [
+      {
+        label: "HTML5",
+      },
+      {
+        label: "CSS3",
+      },
+      {
+        label: "JavaScript",
+      },
+      {
+        label: "WordPress",
+      },
+      {
+        label: "Figma",
+      },
+    ],
+  },
+  {
+    num: "04",
+    category: "frontend / game development",
+    title: "Ping Pong | Web Game",
+    description: `Developed a simple ping pong game, showcasing my skills in frontend development along with game design.`,
+    stack: [
+      {
+        label: "HTML5",
+      },
+      {
+        label: "CSS3",
+      },
+      {
+        label: "JavaScript",
+      },
+      {
+        label: "p5.js",
+      },
+    ],
+  },
+  {
+    num: "05",
+    category: "fullstack",
+    title: "Khuzaima-Pishori-Portfolio | E-Portfolio",
+    description: `This website itself reflects my skills, projects, and experience in a modern and responsive design.`,
+    stack: [
+      {
+        label: "HTML5",
+      },
+      {
+        label: "Tailwind CSS",
+      },
+      {
+        label: "JavaScript",
+      },
+      {
+        label: "React (JSX)",
+      },
+      {
+        label: "Next.js",
+      },
+      {
+        label: "Node.js",
+      },
+    ],
+  },
+  {
+    num: "06",
+    category: "fullstack",
+    title:
+      "Object Detecting Intelli System (O.D.I.S) | Object Detection System",
+    description: `Built an AI tool identifying visible objects in real-time with 90% accuracy. It uses a webcam to detect objects and display them on the screen, showcasing my skills in AI and computer vision.`,
+    stack: [
+      {
+        label: "HTML",
+      },
+      {
+        label: "CSS",
+      },
+      {
+        label: "JavaScript",
+      },
+      {
+        label: "OpenCV",
+      },
+      {
+        label: "TensorFlow.js",
+      },
+      {
+        label: "ml5.min.js",
       },
     ],
   },
