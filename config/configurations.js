@@ -379,7 +379,7 @@ export const projects = [
   },
   {
     num: "02",
-    category: "frontend",
+    category: "frontend / game development",
     title: "Aegon Studio | Official Website",
     description: `Was one of the founding partners, responsible for making the first official version of the website, while planning, managing, and developing pipeline projects, ensuring timely deliverables and quality standards.`,
     stack: [
@@ -426,7 +426,7 @@ export const projects = [
   },
   {
     num: "04",
-    category: "frontend",
+    category: "frontend / game development",
     title: "Ping Pong | Web Game",
     description: `Developed a simple ping pong game, showcasing my skills in frontend development along with game design.`,
     stack: [
@@ -487,7 +487,7 @@ export const projects = [
         label: "JavaScript",
       },
       {
-        label:"OpenCV",
+        label: "OpenCV",
       },
       {
         label: "TensorFlow.js",
