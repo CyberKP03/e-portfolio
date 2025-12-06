@@ -1,22 +1,11 @@
 "use client";
-import ComingSoon from "@/components/ComingSoon";
-import { motion } from "framer-motion";
+
 import React, { useState } from "react";
 import { projects } from "@/config/configurations";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-
-import { BsArrowUpRight, BsGithub } from "react-icons/bs";
-// import {
-//   Tooltip,
-//   TooltipContent,
-//   TooltipProvider,
-//   TooltipTrigger,
-// } from "@company/ui/tooltip";
-
-import Link from "next/link";
-import Image from "next/image";
+import { motion } from "framer-motion";
 
 const Work = () => {
   const [project, setProjects] = useState(projects[0]);
@@ -34,7 +23,7 @@ const Work = () => {
       initial={{ opacity: 0 }}
       animate={{
         opacity: 1,
-        // transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
+        transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
       }}
       className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0"
     >
@@ -76,7 +65,7 @@ const Work = () => {
           <Swiper
             spaceBetween={30}
             slidesPerView={1}
-            className="mb-12 w-[120px] h-[24px]" // fixed width and height
+            className="mb-12 w-[120px] h-[24px] rounded-full" // fixed width and height
             onSlideChange={handleProjectChange}
           >
             {projects.map((item, index) => (
@@ -84,7 +73,11 @@ const Work = () => {
                 key={index}
                 className="flex justify-center items-center w-full h-full"
               >
-                <div className="w-[120px] h-[24px] flex justify-center items-center bg-accent rounded-full"></div>
+                <div className="w-[120px] h-[24px] flex justify-center items-center bg-accent rounded-full cursor-[url('/sliding-arrows.svg'),auto]">
+                  <span className="text-2xl text-primary font-extrabold">
+                    {item?.morse}
+                  </span>
+                </div>
               </SwiperSlide>
             ))}
           </Swiper>
