@@ -337,8 +337,30 @@ export const skillsForResume = [
   },
 ];
 
+const morseMap = {
+  0: "-----",
+  1: ".----",
+  2: "..---",
+  3: "...--",
+  4: "....-",
+  5: ".....",
+  6: "-....",
+  7: "--...",
+  8: "---..",
+  9: "----.",
+};
+
+function numToMorseRaw(num) {
+  if (num === null || num === undefined) return "";
+  let s = String(num).trim();
+  s = s.replace(/^0+/, "");
+  if (s === "") s = "0"; // in case original was "0" or "00"
+  const digits = s.split("").filter((ch) => /\d/.test(ch));
+  return digits.map((d) => morseMap[d] ?? "").join(" ");
+}
+
 //Work section content
-export const projects = [
+export const projectsRaw = [
   {
     num: "01",
     category: "fullstack",
@@ -446,6 +468,17 @@ export const projects = [
   },
   {
     num: "05",
+    category: "frontend / game development / automation",
+    title: "Chess Engine | Local Machine Game",
+    description: `Developed a chess game, played between 2 players on the same machine or against a bot.`,
+    stack: [
+      {
+        label: "Python",
+      },
+    ],
+  },
+  {
+    num: "06",
     category: "fullstack",
     title: "Khuzaima-Pishori-Portfolio | E-Portfolio",
     description: `This website itself reflects my skills, projects, and experience in a modern and responsive design.`,
@@ -471,7 +504,7 @@ export const projects = [
     ],
   },
   {
-    num: "06",
+    num: "07",
     category: "fullstack",
     title:
       "Object Detecting Intelli System (O.D.I.S) | Object Detection System",
@@ -498,5 +531,10 @@ export const projects = [
     ],
   },
 ];
+
+export const projects = projectsRaw.map((p) => ({
+  ...p,
+  morse: numToMorseRaw(p.num),
+}));
 
 // Add more sections as needed
