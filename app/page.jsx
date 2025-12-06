@@ -7,6 +7,7 @@ import { FiDownload } from "react-icons/fi";
 import Socials from "@/components/Socials";
 import Photo from "@/components/Photo";
 import Stats from "@/components/Stats";
+import { downloadResume } from "@/config/service-implementation";
 
 const Home = () => {
   return (
@@ -30,7 +31,8 @@ const Home = () => {
               <Button
                 variant="outline"
                 size="md"
-                className="uppercase flex items-center gap-2 transform hover:scale-105 transition-transform duration-300 ease-in-out"
+                className="uppercase flex items-center gap-2 transform hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer"
+                onClick={() => downloadResume("/api/download-resume", "Khuzaima-Pishori_SDE1_2025", "pdf")}
               >
                 <span>Download Resume</span>
                 <FiDownload className="text-xl" />
