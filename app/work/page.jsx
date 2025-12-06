@@ -28,7 +28,7 @@ const Work = () => {
     //set project to the current slide's index
     console.log(currentIndex);
     setProjects(projects[currentIndex]);
-  }
+  };
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -46,8 +46,11 @@ const Work = () => {
               <div className="text-8xl leading-none font-extrabold text-transparent text-outline">
                 {project.num}
               </div>
+              <div className="text-6xl font-extrabold leading-none group-hover:text-accent transition-all duration-500 capitalize">
+                {project.title}
+              </div>
               {/* project category */}
-              <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
+              <h2 className="text-[42px] font-medium leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
                 {project.category} Project
               </h2>
               {/* project description */}
@@ -69,7 +72,7 @@ const Work = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center items-center xl:h-[120px] h-[80px]">
+        <div className="flex justify-center items-center xl:h-[480px] h-[80px]">
           <Swiper
             spaceBetween={30}
             slidesPerView={1}
