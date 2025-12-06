@@ -146,14 +146,14 @@ export const listOfTabs = [
     class: "w-full",
   },
   {
-    label: "Education",
-    value: "education",
-    class: "w-full",
-  },
-  {
     label: "Skills",
     value: "skillsForResume",
     class: "w-full h-full",
+  },
+  {
+    label: "Education",
+    value: "education",
+    class: "w-full",
   },
   {
     label: "About Me",

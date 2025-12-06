@@ -20,6 +20,7 @@ const Stats = () => {
                   delay={index * 0.5}
                   className="text-4xl xl:text-6xl font-extrabold"
                 />
+                {item?.num < 10 ? "+" : null}
                 <p
                   className={`${
                     item?.text?.length < 15 ? "max-w-[100px]" : "max-w-[150px]"
