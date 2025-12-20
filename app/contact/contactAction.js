@@ -1,8 +1,11 @@
 "use server";
 
 import nodemailer from "nodemailer";
+import twilio from "twilio";
 
 export async function submitContactForm(prevState, formData) {
+  console.log("--- Contact Form Submission Started ---");
+  
   const rawFormData = {
     firstname: formData.get("firstname"),
     lastname: formData.get("lastname"),
@@ -19,16 +22,10 @@ export async function submitContactForm(prevState, formData) {
     return {
       success: false,
       message: "Please fill in all required fields.",
-      errors: {
-        firstname: !rawFormData.firstname ? "First name is required" : null,
-        email: !rawFormData.email ? "Email is required" : null,
-        purpose: !rawFormData.purpose ? "Purpose is required" : null,
-      },
-      inputs: rawFormData,
     };
   }
 
-  // Cool HTML Email Template
+  // --- HTML Email Template ---
   const htmlContent = `
     <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
         <!-- Header -->
@@ -90,11 +87,12 @@ export async function submitContactForm(prevState, formData) {
       </div>
   `;
 
-  // 1. Send Email using Nodemailer
+  // --- 1. EMAIL LOGIC ---
   let emailSuccess = false;
   let emailError = null;
 
   if(process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+      console.log("Attempting to send Email...");
       try {
         const transporter = nodemailer.createTransport({
           service: "gmail", 
@@ -104,7 +102,6 @@ export async function submitContactForm(prevState, formData) {
           },
         });
 
-        // Handle File Attachment? 
         let attachments = [];
         if (rawFormData.jobDescriptionFile && rawFormData.jobDescriptionFile.size > 0) {
             const buffer = await rawFormData.jobDescriptionFile.arrayBuffer();
@@ -116,9 +113,10 @@ export async function submitContactForm(prevState, formData) {
 
         await transporter.sendMail({
           from: process.env.EMAIL_USER,
-          to: process.env.EMAIL_USER, // Send to yourself
+          to: process.env.EMAIL_USER,
+          replyTo: rawFormData.email,
           subject: `✨ New Inquiry: ${rawFormData.firstname} from ${rawFormData.company || 'Portfolio'}`,
-          html: htmlContent, // Use the HTML content
+          html: htmlContent,
           attachments: attachments
         });
         emailSuccess = true;
@@ -128,35 +126,97 @@ export async function submitContactForm(prevState, formData) {
         emailError = error;
       }
   } else {
-      console.warn("Skipping Email: EMAIL_USER or EMAIL_PASS not set in .env");
+      console.warn("Skipping Email: EMAIL_USER or EMAIL_PASS not set");
   }
 
-  // Return logic
-  if (emailSuccess) {
-       return {
-            success: true,
-            message: "Thanks! I've received your message.",
-        };
-  } else if (!process.env.EMAIL_USER) {
-       // Fallback for demo purposes if no env vars set
+  // --- 2. WHATSAPP LOGIC ---
+  let whatsappSuccess = false;
+  let whatsappError = null;
+
+  console.log("Checking WhatsApp Config:");
+  console.log("- SID:", process.env.TWILIO_ACCOUNT_SID ? "Found" : "Missing");
+  console.log("- Token:", process.env.TWILIO_AUTH_TOKEN ? "Found" : "Missing");
+  console.log("- My Number:", process.env.MY_PHONE_NUMBER ? "Found" : "Missing");
+
+  if (process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_AUTH_TOKEN && process.env.MY_PHONE_NUMBER) {
+      console.log("Attempting to send WhatsApp...");
+      try {
+        const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+        
+        const fromNumber = 'whatsapp:+14155238886'; 
+        
+        // Clean Phone Number
+        let toNumber = process.env.MY_PHONE_NUMBER.replace(/[\s\-\(\)]/g, '');
+        if (!toNumber.startsWith('+')) {
+             console.log("Adding missing '+' to phone number");
+             toNumber = '+' + toNumber;
+        }
+
+        console.log(`Sending WhatsApp from ${fromNumber} to ${toNumber}`);
+
+        const waMessage = `🚀 *New Portfolio Inquiry!*\n\n` +
+                          `👤 *Name:* ${rawFormData.firstname} ${rawFormData.lastname}\n` +
+                          `📧 *Email:* ${rawFormData.email}\n` +
+                          `🏢 *Company:* ${rawFormData.company || "N/A"}\n\n` +
+                          `📝 *Message:*\n${rawFormData.purpose}`;
+
+        await client.messages.create({
+          body: waMessage,
+          from: fromNumber,
+          to: `whatsapp:${toNumber}`
+        });
+        whatsappSuccess = true;
+         console.log("WhatsApp message sent successfully.");
+      } catch (error) {
+        console.error("Error sending WhatsApp:", error);
+        whatsappError = error;
+      }
+  } else {
+      console.warn("Skipping WhatsApp: credentials missing");
+  }
+
+  // --- RETURN LOGIC ---
+  if (emailSuccess || whatsappSuccess) {
+       console.log("Success: At least one Method worked.");
+       let msg = "Thanks! I've received your message.";
+       if (emailSuccess && whatsappSuccess) {
+          msg = "Message sent successfully (Email + WhatsApp)!";
+       } else if (emailSuccess) {
+           msg = "Message sent to Email successfully!";
+       } else if (whatsappSuccess) {
+           msg = "Message sent to WhatsApp successfully!";
+       }
+       
+       if (emailError) msg += " (Email failed)";
+       if (whatsappError) msg += " (WhatsApp failed)";
+
+       return { success: true, message: msg };
+  } else if (!process.env.EMAIL_USER && !process.env.TWILIO_ACCOUNT_SID) {
+        console.log("Simulation Mode: No credentials");
         return {
             success: true,
             message: "Simulation: Message 'sent' (Configure .env to enable real sending)",
         };
   } else {
+      console.error("Failure: Both methods failed.");
       // Return specific error message
       let errorMsg = "Failed to send message.";
       if (emailError) {
           if (emailError.message.includes("Invalid login")) {
-               errorMsg = "Authentication failed. Please check your Email App Password.";
+               errorMsg += " Email: Auth failed (Check App Pass).";
           } else {
-               errorMsg = emailError.message;
+               errorMsg += " Email: " + emailError.message;
           }
       }
-      
-      return {
-          success: false,
-          message: errorMsg,
+      if (whatsappError) {
+           if (whatsappError.code === 63015 || whatsappError.message.includes("not currently joined")) {
+               errorMsg += " WhatsApp: Target number hasn't joined Sandbox.";
+           } else if (whatsappError.code === 21211) {
+                errorMsg += " WhatsApp: Invalid Phone Number format.";
+           } else {
+               errorMsg += " WhatsApp: " + whatsappError.message;
+           }
       }
+      return { success: false, message: errorMsg };
   }
 }
