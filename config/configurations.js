@@ -12,6 +12,9 @@ import {
   FaGithub,
   FaLinkedinIn,
   FaYoutube,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaMapMarkerAlt,
 } from "react-icons/fa";
 
 import { SiGit, SiMysql, SiNextdotjs, SiTailwindcss } from "react-icons/si";
@@ -529,6 +532,24 @@ export const projectsRaw = [
         label: "ml5.min.js",
       },
     ],
+  },
+];
+
+export const contactInfo = [
+  {
+    icon: <FaPhoneAlt />,
+    title: "Phone",
+    description: "(+91) 70216 33526", 
+  },
+  {
+    icon: <FaEnvelope />,
+    title: "Email",
+    description: "pishorikhuzaima@gmail.com",
+  },
+  {
+    icon: <FaMapMarkerAlt />,
+    title: "Address",
+    description: "Mumbai, India",
   },
 ];
 
