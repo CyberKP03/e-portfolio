@@ -1,11 +1,29 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
+import { useLoader } from "@/contexts/LoaderContext";
 
 // Components
 import Nav from "./Nav";
 import MobileNav from "./MobileNav";
 
 const Header = () => {
+  const pathname = usePathname();
+  const { startLoading, isLoading } = useLoader();
+
+  const handleHireMeClick = (e) => {
+    // Don't navigate if already on contact page or if loading
+    if (pathname === "/contact" || isLoading) {
+      e.preventDefault();
+      return;
+    }
+    
+    // Start the loader
+    startLoading();
+  };
+
   return (
     <header className="container mx-auto py-8 text-white">
       <div className="mx-auto flex justify-between items-center">
@@ -30,8 +48,13 @@ const Header = () => {
         {/* desktop nav & hire me button */}
         <div className="hidden xl:flex items-center gap-8">
           <Nav />
-          <Link href="/contact">
-            <Button className="bg-accent text-black hover:bg-green-400">
+          <Link href="/contact" onClick={handleHireMeClick}>
+            <Button 
+              className={`bg-accent text-black hover:bg-green-400 ${
+                isLoading ? "opacity-50 pointer-events-none" : ""
+              }`}
+              disabled={isLoading}
+            >
               Hire me
             </Button>
           </Link>
