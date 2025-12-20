@@ -12,19 +12,28 @@ import Link from "next/link";
 import { CiMenuFries } from "react-icons/ci";
 import { links } from "@/config/configurations";
 import { useState } from "react";
+import { useLoader } from "@/contexts/LoaderContext";
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const { startLoading, isLoading } = useLoader();
 
-  const handleNavClick = () => {
-    setIsOpen(false); // Close sheet on link click
+  const handleNavClick = (path) => {
+    // Don't navigate if already on the same page or if loading
+    if (pathname === path || isLoading) {
+      return;
+    }
+    
+    // Start the loader and close the sheet
+    startLoading();
+    setIsOpen(false);
   };
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger className="flex justify-center items-center">
-        <CiMenuFries className="text-[32px] text-accent cursor-pointer" />
+      <SheetTrigger className="flex justify-center items-center" disabled={isLoading}>
+        <CiMenuFries className={`text-[32px] text-accent cursor-pointer ${isLoading ? "opacity-50" : ""}`} />
       </SheetTrigger>
 
       <SheetContent className="flex flex-col">
@@ -34,7 +43,7 @@ const MobileNav = () => {
         </SheetDescription>
 
         <div className="mt-32 mb-40 text-center text-2xl">
-          <Link href="/" onClick={handleNavClick}>
+          <Link href="/" onClick={() => handleNavClick("/")}>
             <h1 className="text-4xl font-semi-bold">
               Khu<span className="text-accent">.zip</span>
             </h1>
@@ -49,10 +58,12 @@ const MobileNav = () => {
               <Link
                 key={index}
                 href={link?.path}
-                onClick={handleNavClick}
+                onClick={() => handleNavClick(link?.path)}
                 className={`${
                   isActive ? "text-accent" : ""
-                } text-xl capitalize hover:text-accent transition-all`}
+                } text-xl capitalize hover:text-accent transition-all ${
+                  isLoading ? "pointer-events-none opacity-50" : ""
+                }`}
               >
                 {link?.name}
               </Link>
