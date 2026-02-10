@@ -46,9 +46,9 @@ const Header = () => {
           Software Development Engineer
         </span>
         {/* desktop nav & hire me button */}
-        {/* <div className="hidden xl:flex items-center gap-8">
+        <div className="hidden xl:flex items-center gap-8">
           <Nav />
-          <Link href="/contact" onClick={handleHireMeClick}>
+          {/* <Link href="/contact" onClick={handleHireMeClick}>
             <Button 
               className={`bg-accent text-black hover:bg-green-400 ${
                 isLoading ? "opacity-50 pointer-events-none" : ""
@@ -57,8 +57,8 @@ const Header = () => {
             >
               Contact Me
             </Button>
-          </Link>
-        </div> */}
+          </Link> */}
+        </div>
 
         {/* mobile nav */}
         <div className="xl:hidden">
